@@ -67,8 +67,8 @@
 #include "clang/AST/RecursiveASTVisitor.h"
 #include "clang/AST/ASTConsumer.h"
 #include "clang/Parse/ParseAST.h"
-#include "clang/Rewrite/Frontend/Rewriters.h"
-#include "clang/Rewrite/Core/Rewriter.h"
+#include "clang/Rewrite/Rewriters.h"
+#include "clang/Rewrite/Rewriter.h"
 
 using namespace clang;
 
@@ -94,8 +94,9 @@ Expr *MyRecursiveASTVisitor::VisitBinaryOperator(BinaryOperator *E)
   // Determine type of binary operator
   if (E->isLogicalOp())
   {
+	  StringRef E_name = E->getOpcodeStr();
     // Replace operator ("||" or "&&") with ","
-    Rewrite.ReplaceText(E->getOperatorLoc(), E->getOpcodeStr().size(), ",");
+    Rewrite.ReplaceText(E->getOperatorLoc(), (unsigned)E_name.size(), StringRef(","));
 
     // Insert function call at start of first expression.
     // Note getLocStart() should work as well as getExprLoc()
