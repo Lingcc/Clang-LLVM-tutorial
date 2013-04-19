@@ -36,8 +36,7 @@ EXES = $(OBJECTS:.o=)
 		    -lclangStaticAnalyzerCore\
 		    -lclangAnalysis\
 		    -lclangARCMigrate\
-		    -lclangRewriteFrontend\
-		    -lclangRewriteCore\
+		    -lclangRewrite\
 		    -lclangEdit\
 		    -lclangAST\
 		    -lclangLex\
