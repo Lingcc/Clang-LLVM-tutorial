@@ -21,6 +21,20 @@
 #include "clang/Lex/Preprocessor.h"
 #include "clang/Frontend/CompilerInstance.h"
 
+/**
+ * Tutorial2: Tokenize a given File
+ * 
+ * After create the preprocessor object, this tutorial try to tokenize the source code.
+ * Firstly, creat a file id for the input file and store it as "main file" in the 
+ * SourceManager object, and tells the preprocessor to enter the main file of 
+ * SourceManager into its file list, and does some other stuff ( like create
+ * buffer with predifines),too.
+ *
+ * And then after the source file is added, we can ask the preprocessor to 
+ * preprocess it and read the preprocessed input token.
+ *
+ * The preprocessor::Lex() will just pull a token from current lexer or macro object.
+ */
 
 int main()
 {

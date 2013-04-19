@@ -24,6 +24,15 @@
 #include "clang/Frontend/FrontendOptions.h"
 #include "clang/Frontend/CompilerInstance.h"
 
+/**
+ * Tutorial3: Add default include file search dir
+ * 
+ * After create the preprocessor object, tokenize the source code,
+ * this toturial want to add the default system header paths to clang.
+ * 
+ * This is done by creating a default HeaderSearchOptions.
+ */
+
 
 int main()
 {
@@ -63,7 +72,6 @@ int main()
     clang::CompilerInstance compInst;
 
     llvm::IntrusiveRefCntPtr<clang::PreprocessorOptions> pOpts;
-
     clang::Preprocessor preprocessor(
         pOpts,
         *pDiagnosticsEngine,
@@ -73,12 +81,7 @@ int main()
         headerSearch,
         compInst);
 
-
     clang::PreprocessorOptions preprocessorOptions;
-    // disable predefined Macros so that you only see the tokens from your 
-    // source file. Note, this has some nasty side-effects like also undefning
-    // your archictecture and things like that.
-    //preprocessorOptions.UsePredefines = false;
 
     clang::FrontendOptions frontendOptions;
     clang::InitializePreprocessor(

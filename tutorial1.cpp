@@ -23,6 +23,22 @@
 #include "clang/Frontend/CompilerInstance.h"
 
 
+/**
+ * Tutorial1: PreProcessor Object Creation
+ *   Clang make Preprocessor together with FE to improve performance.
+ *   Here, the last line of the main function is to create a preprocessor object
+ *   with the following parameters:
+ *    1. IntrusiveRefCntPtr< PreprocessorOptions > 	PPOpts: Options for the preprocessor.
+ *    2. DiagnosticsEngine & 	diags: Used by clang to report errors and warnings to user.
+ *      2.1 DiagnosticsConsume: The object that is actually displaying the messages t the user.
+ *    3. LangOptions & 	opts: What language to process, C/C++/Obj-C.
+ *    4. const TargetInfo * 	target:  Target of the assembly.
+ *    5. SourceManager & 	SM: Used by Clang to load and cache source files.
+ *    6. HeaderSearch & 	Headers: Configures where clang looks for include files.
+ *    7. ModuleLoader & 	TheModuleLoader: Used to help resolve module names.
+ */
+
+
 int main()
 {
     clang::DiagnosticOptions diagnosticOptions;

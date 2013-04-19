@@ -34,6 +34,20 @@
 #include "clang/Parse/Parser.h"
 #include "clang/Frontend/CompilerInstance.h"
 
+/**
+ * Tutorial4: Parsing the file
+ * 
+ * Finally, we come to the parsing. This is done by calling to clang::ParseAST().
+ * This function have parameter:
+ *   1. Preprocessor &PP, 
+ *   2. ASTConsumer *Consumer,
+ *   3. ASTContext &Ctx
+ *   4. CodeCompleteConsumer *CompletionConsumer,
+ *   5. TranslationUnitKind TUKind
+ *
+ *
+ */
+
 int main()
 {
     clang::DiagnosticOptions diagnosticOptions;
@@ -113,8 +127,7 @@ int main()
         *headerSearchOptions,
         frontendOptions);
         
-    const clang::FileEntry *pFile = fileManager.getFile(
-        "test.c");
+    const clang::FileEntry *pFile = fileManager.getFile("test.c");
     sourceManager.createMainFileID(pFile);
 
     const clang::TargetInfo &targetInfo = *pTargetInfo;
