@@ -16,34 +16,40 @@
 #include "clang/Basic/TargetInfo.h"
 
 /******************************************************************************
+ * CItutorial1: Use CompilerInstance to initialize a preprocessor
+ * CI need the following operations to prepare for a preprocessor:
+ *   1. createDiagnostics()
+ *   2. createFileManager()
+ *   3. createSourceManager()
+ *
  * This tutorial just shows off the steps needed to build up to a Preprocessor
  * object. Note that the order below is important.
  *****************************************************************************/
 int main()
 {
-    using clang::CompilerInstance;
-    using clang::TargetOptions;
-    using clang::TargetInfo;
-    using clang::DiagnosticOptions;
-    using clang::TextDiagnosticPrinter;
+  using clang::CompilerInstance;
+  using clang::TargetOptions;
+  using clang::TargetInfo;
+  using clang::DiagnosticOptions;
+  using clang::TextDiagnosticPrinter;
 
-    CompilerInstance ci;
-    DiagnosticOptions diagnosticOptions;
-    TextDiagnosticPrinter *pTextDiagnosticPrinter =
-        new TextDiagnosticPrinter(
-            llvm::outs(),
-            &diagnosticOptions,
-            true);
+  CompilerInstance ci;
+  DiagnosticOptions diagnosticOptions;
+  TextDiagnosticPrinter *pTextDiagnosticPrinter =
+    new TextDiagnosticPrinter(
+			      llvm::outs(),
+			      &diagnosticOptions,
+			      true);
 
-    ci.createDiagnostics(pTextDiagnosticPrinter);
+  ci.createDiagnostics(pTextDiagnosticPrinter);
 
-    llvm::IntrusiveRefCntPtr<TargetOptions> pto( new TargetOptions());
-    pto->Triple = llvm::sys::getDefaultTargetTriple();
-    TargetInfo *pti = TargetInfo::CreateTargetInfo(ci.getDiagnostics(), pto.getPtr());
-    ci.setTarget(pti);
+  llvm::IntrusiveRefCntPtr<TargetOptions> pto( new TargetOptions());
+  pto->Triple = llvm::sys::getDefaultTargetTriple();
+  TargetInfo *pti = TargetInfo::CreateTargetInfo(ci.getDiagnostics(), pto.getPtr());
+  ci.setTarget(pti);
 
-    ci.createFileManager();
-    ci.createSourceManager(ci.getFileManager());
-    ci.createPreprocessor();
-    return 0;
+  ci.createFileManager();
+  ci.createSourceManager(ci.getFileManager());
+  ci.createPreprocessor();
+  return 0;
 }

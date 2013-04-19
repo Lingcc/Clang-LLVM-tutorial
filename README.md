@@ -10,23 +10,19 @@ This particular set of tutorials tracks the llvm / clang mainline and is updated
 See contents of the links above for a walkthrough of what these tutorials are doing.
 
 # Other Options #
-The Clang team has been hard at work making it easier to write tools using Clang. There are [4 options](http://clang.llvm.org/docs/Tooling.html)
-for developing tools using clang and llvm infrastructure.
+The Clang team has been hard at work making it easier to write tools using Clang. There are [4 options](http://clang.llvm.org/docs/Tooling.html) for developing tools using clang and llvm infrastructure.
 
 # Latest Stable LLVM / Clang (v3.2) #
-The master branch tracks recent commits to the clang and llvm svn. The tutorial assumes
-you have grabbed a copy of both llvm and clang by following [these instructions](http://clang.llvm.org/get_started.html)
-and that have installed the the resulting binaries by running `make install`. If you want
-the latest public release, then checkout the *3.2* branch.
+The master branch tracks recent commits to the clang and llvm svn. The tutorial assumes you have grabbed a copy of both llvm and clang by following [these instructions](http://clang.llvm.org/get_started.html) and that have installed the the resulting binaries by running `make install`. If you want the latest public release, then checkout the *3.2* branch.
 
     git clone git@github.com:loarabia/Clang-tutorial.git
     git checkout 3.2
 
-# CI tutorials #
-The tutorials prefixed with CI are the same as the original tutorials but use the CompilerInstance object and
-its helper methods to perform the same tasks as the original tutorials. For the most part, this makes the code
-much more compact.
 
+These code can also work on the latest LLVM SVN trunck: SVN r179830
+
+# CI tutorials #
+The tutorials prefixed with CI are the same as the original tutorials but use the [CompilerInstance](http://clang.llvm.org/doxygen/classclang_1_1CompilerInstance.html) object and its helper methods to perform the same tasks as the original tutorials. For the most part, this makes the code much more compact.
 
 
 # Contact Me #

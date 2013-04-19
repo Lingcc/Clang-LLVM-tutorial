@@ -38,70 +38,70 @@
 
 int main()
 {
-    clang::DiagnosticOptions diagnosticOptions;
-    clang::TextDiagnosticPrinter *pTextDiagnosticPrinter =
-        new clang::TextDiagnosticPrinter(
-            llvm::outs(),
-            &diagnosticOptions);
-    llvm::IntrusiveRefCntPtr<clang::DiagnosticIDs> pDiagIDs;
+  clang::DiagnosticOptions diagnosticOptions;
+  clang::TextDiagnosticPrinter *pTextDiagnosticPrinter =
+    new clang::TextDiagnosticPrinter(
+				     llvm::outs(),
+				     &diagnosticOptions);
+  llvm::IntrusiveRefCntPtr<clang::DiagnosticIDs> pDiagIDs;
 
-    clang::DiagnosticsEngine *pDiagnosticsEngine =
-        new clang::DiagnosticsEngine(pDiagIDs,
-            &diagnosticOptions,
-            pTextDiagnosticPrinter);
+  clang::DiagnosticsEngine *pDiagnosticsEngine =
+    new clang::DiagnosticsEngine(pDiagIDs,
+				 &diagnosticOptions,
+				 pTextDiagnosticPrinter);
 
-    clang::LangOptions languageOptions;
-    clang::FileSystemOptions fileSystemOptions;
-    clang::FileManager fileManager(fileSystemOptions);
+  clang::LangOptions languageOptions;
+  clang::FileSystemOptions fileSystemOptions;
+  clang::FileManager fileManager(fileSystemOptions);
 
-    clang::SourceManager sourceManager(
-        *pDiagnosticsEngine,
-        fileManager);
+  clang::SourceManager sourceManager(
+				     *pDiagnosticsEngine,
+				     fileManager);
 
-    clang::TargetOptions targetOptions;
-    targetOptions.Triple = llvm::sys::getDefaultTargetTriple();
+  clang::TargetOptions targetOptions;
+  targetOptions.Triple = llvm::sys::getDefaultTargetTriple();
 
-    clang::TargetInfo *pTargetInfo = 
-        clang::TargetInfo::CreateTargetInfo(
-            *pDiagnosticsEngine,
-            &targetOptions);
+  clang::TargetInfo *pTargetInfo = 
+    clang::TargetInfo::CreateTargetInfo(
+					*pDiagnosticsEngine,
+					&targetOptions);
 
-    llvm::IntrusiveRefCntPtr<clang::HeaderSearchOptions> hso;
-    clang::HeaderSearch headerSearch(hso,
-                                     fileManager, 
-                                     *pDiagnosticsEngine,
-                                     languageOptions,
-                                     pTargetInfo);
-    clang::CompilerInstance compInst;
+  llvm::IntrusiveRefCntPtr<clang::HeaderSearchOptions> hso;
+  clang::HeaderSearch headerSearch(hso,
+				   fileManager, 
+				   *pDiagnosticsEngine,
+				   languageOptions,
+				   pTargetInfo);
+  clang::CompilerInstance compInst;
 
-    llvm::IntrusiveRefCntPtr<clang::PreprocessorOptions> pOpts;
+  llvm::IntrusiveRefCntPtr<clang::PreprocessorOptions> pOpts;
 
-    clang::Preprocessor preprocessor(
-        pOpts,
-        *pDiagnosticsEngine,
-        languageOptions,
-        pTargetInfo,
-        sourceManager,
-        headerSearch,
-        compInst);
+  clang::Preprocessor preprocessor(
+				   pOpts,
+				   *pDiagnosticsEngine,
+				   languageOptions,
+				   pTargetInfo,
+				   sourceManager,
+				   headerSearch,
+				   compInst);
 
 
-    const clang::FileEntry *pFile = fileManager.getFile("test.c");
-    sourceManager.createMainFileID(pFile);
-    preprocessor.EnterMainSourceFile();
-    pTextDiagnosticPrinter->BeginSourceFile(languageOptions, &preprocessor);
+  const clang::FileEntry *pFile = fileManager.getFile("test.c");
+  sourceManager.createMainFileID(pFile);
+  preprocessor.EnterMainSourceFile();
+  pTextDiagnosticPrinter->BeginSourceFile(languageOptions, &preprocessor);
 
-    clang::Token token;
-    do {
-        preprocessor.Lex(token);
-        if( pDiagnosticsEngine->hasErrorOccurred())
-        {
-            break;
-        }
-        preprocessor.DumpToken(token);
-        std::cerr << std::endl;
-    } while( token.isNot(clang::tok::eof));
-    pTextDiagnosticPrinter->EndSourceFile();
+  clang::Token token;
+  do {
+    preprocessor.Lex(token);
+    if( pDiagnosticsEngine->hasErrorOccurred())
+      {
+	break;
+      }
+    preprocessor.DumpToken(token);
+    std::cerr << std::endl;
+  } while( token.isNot(clang::tok::eof));
+  pTextDiagnosticPrinter->EndSourceFile();
 
-    return 0;
+  return 0;
 }

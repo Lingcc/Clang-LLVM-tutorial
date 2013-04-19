@@ -41,54 +41,54 @@
 
 int main()
 {
-    clang::DiagnosticOptions diagnosticOptions;
-    clang::TextDiagnosticPrinter *pTextDiagnosticPrinter =
-        new clang::TextDiagnosticPrinter(
-            llvm::outs(),
-            &diagnosticOptions,
-            true);
-    llvm::IntrusiveRefCntPtr<clang::DiagnosticIDs> pDiagIDs;
-    //clang::DiagnosticIDs diagIDs;
+  clang::DiagnosticOptions diagnosticOptions;
+  clang::TextDiagnosticPrinter *pTextDiagnosticPrinter =
+    new clang::TextDiagnosticPrinter(
+				     llvm::outs(),
+				     &diagnosticOptions,
+				     true);
+  llvm::IntrusiveRefCntPtr<clang::DiagnosticIDs> pDiagIDs;
+  //clang::DiagnosticIDs diagIDs;
     
-    clang::DiagnosticsEngine *pDiagnosticsEngine =
-        new clang::DiagnosticsEngine(pDiagIDs,
-            &diagnosticOptions,
-            pTextDiagnosticPrinter);
+  clang::DiagnosticsEngine *pDiagnosticsEngine =
+    new clang::DiagnosticsEngine(pDiagIDs,
+				 &diagnosticOptions,
+				 pTextDiagnosticPrinter);
 
-    clang::LangOptions languageOptions;
-    clang::FileSystemOptions fileSystemOptions;
-    clang::FileManager fileManager(fileSystemOptions);
-    clang::SourceManager sourceManager(
-        *pDiagnosticsEngine,
-        fileManager);
+  clang::LangOptions languageOptions;
+  clang::FileSystemOptions fileSystemOptions;
+  clang::FileManager fileManager(fileSystemOptions);
+  clang::SourceManager sourceManager(
+				     *pDiagnosticsEngine,
+				     fileManager);
 
-    clang::TargetOptions targetOptions;
-    targetOptions.Triple = llvm::sys::getDefaultTargetTriple();
+  clang::TargetOptions targetOptions;
+  targetOptions.Triple = llvm::sys::getDefaultTargetTriple();
 
-    clang::TargetInfo *pTargetInfo = 
-        clang::TargetInfo::CreateTargetInfo(
-            *pDiagnosticsEngine,
-            &targetOptions);
+  clang::TargetInfo *pTargetInfo = 
+    clang::TargetInfo::CreateTargetInfo(
+					*pDiagnosticsEngine,
+					&targetOptions);
 
-    llvm::IntrusiveRefCntPtr<clang::HeaderSearchOptions> hso;
+  llvm::IntrusiveRefCntPtr<clang::HeaderSearchOptions> hso;
 
-    clang::HeaderSearch headerSearch(hso,
-                                     fileManager, 
-                                     *pDiagnosticsEngine,
-                                     languageOptions,
-                                     pTargetInfo);
-    clang::CompilerInstance compInst;
+  clang::HeaderSearch headerSearch(hso,
+				   fileManager, 
+				   *pDiagnosticsEngine,
+				   languageOptions,
+				   pTargetInfo);
+  clang::CompilerInstance compInst;
 
-    llvm::IntrusiveRefCntPtr<clang::PreprocessorOptions> pOpts;
+  llvm::IntrusiveRefCntPtr<clang::PreprocessorOptions> pOpts;
 
-    clang::Preprocessor preprocessor(
-        pOpts,
-        *pDiagnosticsEngine,
-        languageOptions,
-        pTargetInfo,
-        sourceManager,
-        headerSearch,
-        compInst);
+  clang::Preprocessor preprocessor(
+				   pOpts,
+				   *pDiagnosticsEngine,
+				   languageOptions,
+				   pTargetInfo,
+				   sourceManager,
+				   headerSearch,
+				   compInst);
 
-    return 0;
+  return 0;
 }
