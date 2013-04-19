@@ -27,11 +27,8 @@ The tutorials prefixed with CI are the same as the original tutorials but use th
 its helper methods to perform the same tasks as the original tutorials. For the most part, this makes the code
 much more compact.
 
-# Windows Build #
-Note on the Windows build: Currently the paths are hardcoded. Please see the SharedBuild.targets file
-inside of the SharedBuild project to update the path for your specific LLVM and CLANG install.
 
-In particular, the LLVMLibsDirs property and the LLVMIncludes property should be updated.
 
 # Contact Me #
 For any questions, please ping me via my github account. Changes and additions are always welcome.
+
