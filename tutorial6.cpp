@@ -42,6 +42,15 @@
 #include "clang/Parse/ParseAST.h"
 #include "clang/Frontend/CompilerInstance.h"
 
+/**
+ * Tutorial6: Customize AST Consumer
+ * 
+ * We defined a new ASTConsumer to replace the default one. Which will
+ * HandleTopLevelDecl()
+ *
+ * And this class can be used by clang:Sema and clang::ParseAST
+ */
+
 class MyASTConsumer : public clang::ASTConsumer
 {
 public:
