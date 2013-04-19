@@ -9,8 +9,12 @@
 #include <iostream>
 
 #include "llvm/Support/Host.h"
+#include "llvm/ADT/IntrusiveRefCntPtr.h"
+#include "llvm/ADT/OwningPtr.h"
 #include "llvm/Support/raw_ostream.h"
 
+#include "clang/Basic/DiagnosticOptions.h"
+#include "clang/Frontend/TextDiagnosticPrinter.h"
 #include "clang/Frontend/CompilerInstance.h"
 #include "clang/Basic/TargetOptions.h"
 #include "clang/Basic/TargetInfo.h"
@@ -63,14 +67,22 @@ int main()
   using clang::TargetOptions;
   using clang::TargetInfo;
   using clang::FileEntry;
+  using clang::DiagnosticOptions;
+  using clang::TextDiagnosticPrinter;
 
   CompilerInstance ci;
-  ci.createDiagnostics(0,NULL);
+  DiagnosticOptions diagnosticOptions;
+  TextDiagnosticPrinter *pTextDiagnosticPrinter =
+      new TextDiagnosticPrinter(
+          llvm::outs(),
+          &diagnosticOptions,
+          true);
+  ci.createDiagnostics(pTextDiagnosticPrinter);
 
-  TargetOptions to;
-  to.Triple = llvm::sys::getDefaultTargetTriple();
-  TargetInfo *pti = TargetInfo::CreateTargetInfo(ci.getDiagnostics(), to);
-  ci.setTarget(pti);
+  llvm::IntrusiveRefCntPtr<TargetOptions> pto( new TargetOptions());
+  pto->Triple = llvm::sys::getDefaultTargetTriple();
+  llvm::IntrusiveRefCntPtr<TargetInfo> pti(TargetInfo::CreateTargetInfo(ci.getDiagnostics(), pto.getPtr()));
+  ci.setTarget(pti.getPtr());
 
   ci.createFileManager();
   ci.createSourceManager(ci.getFileManager());

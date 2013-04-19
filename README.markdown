@@ -10,20 +10,28 @@ This particular set of tutorials tracks the llvm / clang mainline and is updated
 See contents of the links above for a walkthrough of what these tutorials are doing.
 
 # Other Options #
-The Clang team has been hard at work making it easier to write tools using Clang. There are now [4 well documented options](http://clang.llvm.org/docs/Tooling.html)
+The Clang team has been hard at work making it easier to write tools using Clang. There are [4 options](http://clang.llvm.org/docs/Tooling.html)
 for developing tools using clang and llvm infrastructure.
 
-# Latest Stable LLVM / Clang (v3.1) #
-The master branch tracks recent commits to the clang and llvm svn. If you want
-the latest public release, then checkout the *3.1* tag.
+# Latest Stable LLVM / Clang (v3.2) #
+The master branch tracks recent commits to the clang and llvm svn. The tutorial assumes
+you have grabbed a copy of both llvm and clang by following [these instructions](http://clang.llvm.org/get_started.html)
+and that have installed the the resulting binaries by running `make install`. If you want
+the latest public release, then checkout the *3.2* branch.
 
     git clone git@github.com:loarabia/Clang-tutorial.git
-    git checkout 3.1
+    git checkout 3.2
 
 # CI tutorials #
 The tutorials prefixed with CI are the same as the original tutorials but use the CompilerInstance object and
 its helper methods to perform the same tasks as the original tutorials. For the most part, this makes the code
 much more compact.
+
+# Windows Build #
+Note on the Windows build: Currently the paths are hardcoded. Please see the SharedBuild.targets file
+inside of the SharedBuild project to update the path for your specific LLVM and CLANG install.
+
+In particular, the LLVMLibsDirs property and the LLVMIncludes property should be updated.
 
 # Contact Me #
 For any questions, please ping me via my github account. Changes and additions are always welcome.
