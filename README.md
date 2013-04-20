@@ -1,13 +1,17 @@
 # About #
-This is a collection of tutorials showing off how to use core Clang and LLVM types. It is based directly on two older tutorials which no longer built due to code rot.
+This is a collection of tutorials showing off how to use core Clang and LLVM types. It is based directly on two older tutorials which no longer built due to code rot. It will try to make anyone who is interested in LLVM and Clang could dig into them as soon as possible.
 
-This tutorial will try to make anyone who is interested in LLVM and Clang could dig into them as soon as possible.
+This project forked from [loarabia / Clang-tutorial](https://github.com/loarabia/Clang-tutorial), and extend it for not only more Clang tutorial cases, but also plenty of LLVM tutorials cases, and we have also adjust the source code layout.
 
 It contains:
+
 1. LLVMQuickStart
 2. LLVMJIT
 3. ClangSimple
 4. ClangCompilerInstance
+
+*Status*:All the codes have been tested by LLVM SVN Trunk r179830(2013-4-20).
+
 
 ## LLVMQuickStart
  This tutorial is for get a first impression of  llvm tools like clang, lli, llvm-dis, etc.
@@ -22,6 +26,8 @@ It contains:
 ## ClangCompilerInstance
  It can help to know how to use the CompilerInstance class for preprocessor, lexer and parser creation.
 
+# Credit
+All these cases comes from, or derived from the following project and web post.
 
 1. [Getting Started with the LLVM System](http://llvm.org/docs/GettingStarted.html ) from LLVM.org
 2. [llvm-tutorials](https://github.com/fabriceleal/llvm-tutorials)  from fabriceleal
