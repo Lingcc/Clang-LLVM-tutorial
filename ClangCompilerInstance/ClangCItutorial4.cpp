@@ -66,7 +66,7 @@ int main()
     ci.createASTContext();
     ci.createSema(clang::TU_Complete, NULL);
 
-	  const FileEntry *pFile = ci.getFileManager().getFile("test.c");
+	  const FileEntry *pFile = ci.getFileManager().getFile("../Resources/test.c");
     ci.getSourceManager().createMainFileID(pFile);
     clang::ParseAST(ci.getSema());
     ci.getASTContext().Idents.PrintStats();

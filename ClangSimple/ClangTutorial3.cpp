@@ -91,7 +91,7 @@ int main()
 				frontendOptions);
 
   // Note: Changed the file from tutorial2.
-  const clang::FileEntry *pFile = fileManager.getFile("testInclude.c");
+  const clang::FileEntry *pFile = fileManager.getFile("../Resources/testInclude.c");
   sourceManager.createMainFileID(pFile);
   preprocessor.EnterMainSourceFile();
   pTextDiagnosticPrinter->BeginSourceFile(languageOptions, &preprocessor);

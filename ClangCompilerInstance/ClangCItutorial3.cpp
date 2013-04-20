@@ -88,7 +88,7 @@ int main()
                                   *hso,
                                   ci.getFrontendOpts());
 
-	const FileEntry *pFile = ci.getFileManager().getFile("testInclude.c");
+	const FileEntry *pFile = ci.getFileManager().getFile("../Resources/testInclude.c");
     ci.getSourceManager().createMainFileID(pFile);
     ci.getPreprocessor().EnterMainSourceFile();
     ci.getDiagnosticClient().BeginSourceFile(ci.getLangOpts(),

@@ -52,7 +52,7 @@ int main()
   ci.createSourceManager(ci.getFileManager());
   ci.createPreprocessor();
 
-  const FileEntry *pFile = ci.getFileManager().getFile("test.c");
+  const FileEntry *pFile = ci.getFileManager().getFile("../Resources/test.c");
   ci.getSourceManager().createMainFileID(pFile);
   ci.getPreprocessor().EnterMainSourceFile();
   ci.getDiagnosticClient().BeginSourceFile(ci.getLangOpts(),

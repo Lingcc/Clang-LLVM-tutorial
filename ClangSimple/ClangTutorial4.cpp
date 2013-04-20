@@ -127,7 +127,7 @@ int main()
 				*headerSearchOptions,
 				frontendOptions);
         
-  const clang::FileEntry *pFile = fileManager.getFile("test.c");
+  const clang::FileEntry *pFile = fileManager.getFile("../Resources/test.c");
   sourceManager.createMainFileID(pFile);
 
   const clang::TargetInfo &targetInfo = *pTargetInfo;

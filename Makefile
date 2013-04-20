@@ -6,22 +6,22 @@ LLVMCONFIG := llvm-config
 CXXFLAGS := $(shell $(LLVMCONFIG) --cxxflags) $(RTTIFLAG)
 LLVMLDFLAGS := $(shell $(LLVMCONFIG) --ldflags --libs $(LLVMCOMPONENTS))
 
-SOURCES = ClangTutorial1.cpp \
-    ClangTutorial2.cpp \
-    ClangTutorial3.cpp \
-    ClangTutorial4.cpp \
-    ClangTutorial6.cpp \
-    ClangCItutorial1.cpp \
-    ClangCItutorial2.cpp \
-    ClangCItutorial3.cpp \
-    ClangCItutorial4.cpp \
-    ClangCItutorial6.cpp \
+SOURCES = ClangSimple/ClangTutorial1.cpp \
+    ClangSimple/ClangTutorial2.cpp \
+    ClangSimple/ClangTutorial3.cpp \
+    ClangSimple/ClangTutorial4.cpp \
+    ClangSimple/ClangTutorial6.cpp \
+    ClangCompilerInstance/ClangCItutorial1.cpp \
+    ClangCompilerInstance/ClangCItutorial2.cpp \
+    ClangCompilerInstance/ClangCItutorial3.cpp \
+    ClangCompilerInstance/ClangCItutorial4.cpp \
+    ClangCompilerInstance/ClangCItutorial6.cpp \
     ClangCIBasicRecursiveASTVisitor.cpp \
     ClangCIrewriter.cpp \
     ClangToolingTutorial.cpp \
     ClangCommentHandling.cpp \
-    LLVMJIT1.cpp \
-    LLVMJIT2.cpp
+    LLVMJIT/LLVMJIT1.cpp \
+    LLVMJIT/LLVMJIT2.cpp
 
 OBJECTS = $(SOURCES:.cpp=.o)
 EXES = $(OBJECTS:.o=)

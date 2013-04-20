@@ -86,7 +86,7 @@ int main()
 				   compInst);
 
 
-  const clang::FileEntry *pFile = fileManager.getFile("test.c");
+  const clang::FileEntry *pFile = fileManager.getFile("../Resources/test.c");
   sourceManager.createMainFileID(pFile);
   preprocessor.EnterMainSourceFile();
   pTextDiagnosticPrinter->BeginSourceFile(languageOptions, &preprocessor);
