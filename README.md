@@ -1,14 +1,38 @@
 # About #
-This is a collection of tutorials showing off how to use core Clang types. It is based directly on two older tutorials which no longer built due to code rot.
+This is a collection of tutorials showing off how to use core Clang and LLVM types. It is based directly on two older tutorials which no longer built due to code rot.
 
-1. [tutorial 1](http://amnoid.de/tmp/clangtut/tut.html) by Nico Weber - 9/28/2008
-2. [tutorial 2](http://www.cs.rpi.edu/~laprej/clang.html) by Justin LaPre at Rensselaer Polytechnic Institute - 10/20/2009
-3. [tutorial 3](https://github.com/loarabia/Clang-tutorial/wiki/TutorialOrig) by Larry Olson - 4/14/2012
+This tutorial will try to make anyone who is interested in LLVM and Clang could dig into them as soon as possible.
+
+It contains:
+1. LLVMQuickStart
+2. LLVMJIT
+3. ClangSimple
+4. ClangCompilerInstance
+
+## LLVMQuickStart
+ This tutorial is for get a first impression of  llvm tools like clang, lli, llvm-dis, etc.
+
+## LLVMJIT
+ This tutorial is used to know how the LLVM IR is created and assemed.
+
+## ClangSimple
+ It is used to know how to create a preprocessor, lexer and parser based on Clang Front End.
+ It uses the basic interfaces and classes.
+
+## ClangCompilerInstance
+ It can help to know how to use the CompilerInstance class for preprocessor, lexer and parser creation.
+
+
+1. [Getting Started with the LLVM System](http://llvm.org/docs/GettingStarted.html ) from LLVM.org
+2. [llvm-tutorials](https://github.com/fabriceleal/llvm-tutorials)  from fabriceleal
+3. [llvm_tutorial](https://github.com/r7kamura/llvm_tutorials) from r7kamura
+4. [kaleidoscope](https://github.com/maxsnew/kaleidoscope) from maxsnew
+5. [tutorial 1](http://amnoid.de/tmp/clangtut/tut.html) by Nico Weber - 9/28/2008
+6. [tutorial 2](http://www.cs.rpi.edu/~laprej/clang.html) by Justin LaPre at Rensselaer Polytechnic Institute - 10/20/2009
+7. [tutorial 3](https://github.com/loarabia/Clang-tutorial/wiki/TutorialOrig) by Larry Olson - 4/14/2012
+
 
 This particular set of tutorials tracks the llvm / clang mainline and is updated semi-regularly to account for llvm / clang API changes.
-
-See contents of the links above for a walkthrough of what these tutorials are doing.
-
 # Other Options #
 The Clang team has been hard at work making it easier to write tools using Clang. There are [4 options](http://clang.llvm.org/docs/Tooling.html) for developing tools using clang and llvm infrastructure.
 
