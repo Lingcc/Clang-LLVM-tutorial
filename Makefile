@@ -18,32 +18,34 @@ SOURCES = ClangTutorial1.cpp \
     ClangCItutorial6.cpp \
     ClangCIBasicRecursiveASTVisitor.cpp \
     ClangCIrewriter.cpp \
-		ClangToolingTutorial.cpp \
-		ClangCommentHandling.cpp
+    ClangToolingTutorial.cpp \
+    ClangCommentHandling.cpp \
+    LLVMJIT1.cpp \
+    LLVMJIT2.cpp
 
 OBJECTS = $(SOURCES:.cpp=.o)
 EXES = $(OBJECTS:.o=)
 CLANGLIBS = \
-				-lclangTooling\
-				-lclangFrontendTool\
-				-lclangFrontend\
-				-lclangDriver\
-				-lclangSerialization\
-				-lclangCodeGen\
-				-lclangParse\
-				-lclangSema\
-				-lclangStaticAnalyzerFrontend\
-				-lclangStaticAnalyzerCheckers\
-				-lclangStaticAnalyzerCore\
-				-lclangAnalysis\
-				-lclangARCMigrate\
-				-lclangRewriteFrontend\
-				-lclangRewriteCore\
-				-lclangEdit\
-				-lclangAST\
-				-lclangLex\
-				-lclangBasic\
-				$(shell $(LLVMCONFIG) --libs)
+    -lclangTooling\
+    -lclangFrontendTool\
+    -lclangFrontend\
+    -lclangDriver\
+    -lclangSerialization\
+    -lclangCodeGen\
+    -lclangParse\
+    -lclangSema\
+    -lclangStaticAnalyzerFrontend\
+    -lclangStaticAnalyzerCheckers\
+    -lclangStaticAnalyzerCore\
+    -lclangAnalysis\
+    -lclangARCMigrate\
+    -lclangRewriteFrontend\
+    -lclangRewriteCore\
+    -lclangEdit\
+    -lclangAST\
+    -lclangLex\
+    -lclangBasic\
+    $(shell $(LLVMCONFIG) --libs)
 
 all: $(OBJECTS) $(EXES)
 
