@@ -16,7 +16,7 @@ lli helloworld.bc
 
 echo ">>>Disassemble LLVM IR into reading format helloworld.bc.llir"
 echo ">>>>llvm-dis helloworld.bc > helloworld.bc.llir"
-llvm-dis helloworld.bc > helloworld.bc.llir
+llvm-dis < helloworld.bc > helloworld.bc.llir
 
 
 
