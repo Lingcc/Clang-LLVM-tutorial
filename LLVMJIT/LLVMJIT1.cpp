@@ -1,9 +1,9 @@
 #include <iostream>
-#include "llvm/LLVMContext.h"
-#include "llvm/Module.h"
-#include "llvm/Function.h"
+#include "llvm/IR/LLVMContext.h"
+#include "llvm/IR/Module.h"
+#include "llvm/IR/Function.h"
 #include "llvm/PassManager.h"
-#include "llvm/CallingConv.h"
+#include "llvm/IR/CallingConv.h"
 #include "llvm/Analysis/Verifier.h"
 #include "llvm/Assembly/PrintModulePass.h"
 #include "llvm/IR/IRBuilder.h"

@@ -1,11 +1,11 @@
-#include <llvm/LLVMContext.h>
-#include <llvm/Module.h>
-#include <llvm/Function.h>
+#include <llvm/IR/LLVMContext.h>
+#include <llvm/IR/Module.h>
+#include <llvm/IR/Function.h>
 #include <llvm/PassManager.h>
-#include <llvm/CallingConv.h>
+#include <llvm/IR/CallingConv.h>
 #include <llvm/Analysis/Verifier.h>
 #include <llvm/Assembly/PrintModulePass.h>
-#include <llvm/Support/IRBuilder.h>
+#include <llvm/IR/IRBuilder.h>
 #include <llvm/Support/raw_ostream.h>
 #include <iostream>
 
@@ -80,19 +80,21 @@ Module* makeLLVMModule() {
   // ** cond_true **
   builder.SetInsertPoint(cond_true);
   Value* yMinusX = builder.CreateSub(y, x, "tmp");
-  std::vector<Value*> args1;
-  args1.push_back(x);
-  args1.push_back(yMinusX);
-  Value* recur_1 = builder.CreateCall(gcd, args1.begin(), args1.end(), "tmp");
+  std::vector<Value*> args1_vec;
+  args1_vec.push_back(x);
+  args1_vec.push_back(yMinusX);
+  ArrayRef<Value*> args1(args1_vec);
+  Value* recur_1 = builder.CreateCall(gcd, args1, "tmp");
   builder.CreateRet(recur_1);
 
   // ** cond_false_2 **
   builder.SetInsertPoint(cond_false_2);
   Value* xMinusY = builder.CreateSub(x, y, "tmp");
-  std::vector<Value*> args2;
-  args2.push_back(xMinusY);
-  args2.push_back(y);
-  Value* recur_2 = builder.CreateCall(gcd, args2.begin(), args2.end(), "tmp");
+  std::vector<Value*> args2_vec;
+  args2_vec.push_back(xMinusY);
+  args2_vec.push_back(y);
+  ArrayRef<Value*> args2(args2_vec);
+  Value* recur_2 = builder.CreateCall(gcd, args2, "tmp");
   builder.CreateRet(recur_2);
 
   return mod;
