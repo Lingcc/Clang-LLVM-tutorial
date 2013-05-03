@@ -159,7 +159,7 @@ int main()
 				frontendOptions);
         
   const clang::FileEntry *pFile = fileManager.getFile(
-						      "input04.c");
+						      "../Resources/input04.c");
   sourceManager.createMainFileID(pFile);
 
   const clang::TargetInfo &targetInfo = *pTargetInfo;

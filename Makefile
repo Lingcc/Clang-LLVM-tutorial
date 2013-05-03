@@ -16,10 +16,10 @@ SOURCES = ClangSimple/ClangTutorial1.cpp \
     ClangCompilerInstance/ClangCItutorial3.cpp \
     ClangCompilerInstance/ClangCItutorial4.cpp \
     ClangCompilerInstance/ClangCItutorial6.cpp \
-    ClangCIBasicRecursiveASTVisitor.cpp \
-    ClangCIrewriter.cpp \
-    ClangToolingTutorial.cpp \
-    ClangCommentHandling.cpp \
+    ClangCompilerInstance/ClangCIBasicRecursiveASTVisitor.cpp \
+    ClangCompilerInstance/ClangCIrewriter.cpp \
+    ClangSimple/ClangToolingTutorial.cpp \
+    ClangSimple/ClangCommentHandling.cpp \
     LLVMJIT/LLVMJIT1.cpp \
     LLVMJIT/LLVMJIT2.cpp
 
