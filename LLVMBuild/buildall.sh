@@ -1,23 +1,44 @@
 #!/bin/bash
-LLVM_SRC_DIR="llvm_src_all"
-echo ">>> git pull $LLVM_SRC_DIR"
-cd $LLVM_SRC_DIR && git pull &
 
+LLVM_SRC_DIR="llvm_src_all"
+if [ ! -d "$LLVM_SRC_DIR" ]; then
+  echo ">>> Clone llvm to $LLVM_SRC_DIR"
+  git clone http://llvm.org/git/llvm.git $LLVM_SRC_DIR &
+else
+  echo ">>> git pull $LLVM_SRC_DIR"
+  cd $LLVM_SRC_DIR && git pull &
+fi
+  
 CLANG_SRC_DIR="$LLVM_SRC_DIR/tools/clang"
-echo ">>> git pull $CLANG_SRC_DIR"
-cd $CLANG_SRC_DIR && git pull &
+if [ ! -d "$CLANG_SRC_DIR" ]; then
+    echo ">>> git clone $CLANG_SRC_DIR"
+    git clone http://llvm.org/git/clang.git $CLANG_SRC_DIR &
+else
+    echo ">>> git pull $CLANG_SRC_DIR"
+    cd $CLANG_SRC_DIR && git pull &
+fi
 
 COMPILER_RT_SRC_DIR="$LLVM_SRC_DIR/projects/compiler-rt"
-echo ">>> git pull $COMPILER_RT_SRC_DIR"
-cd $COMPILER_RT_SRC_DIR && git pull &
+if [ ! -d "$COMPILER_RT_SRC_DIR" ]; then
+    echo ">>> git clone $COMPILER_RT_SRC_DIR"
+    git clone http://llvm.org/git/compiler-rt.git $COMPILER_RT_SRC_DIR &
+else
+    echo ">>> git pull $COMPILER_RT_SRC_DIR"
+    cd $COMPILER_RT_SRC_DIR && git pull &
+fi
 
 
 TESTSUITE_SRC_DIR="$LLVM_SRC_DIR/projects/test-suite"
-echo ">>> git pull $TESTSUITE_SRC_DIR"
-cd $TESTSUITE_SRC_DIR && git pull &
+if [ ! -d "$TESTSUITE_SRC_DIR" ]; then
+    echo ">>> git clone $TESTSUITE_SRC_DIR"
+    git clone http://llvm.org/git/test-suite.git $TESTSUITE_SRC_DIR &
+else
+    echo ">>> git pull $TESTSUITE_SRC_DIR"
+    cd $TESTSUITE_SRC_DIR && git pull &
+fi
 
 wait
-echo ">>> git pull done, start configure, make, make install"
+echo ">>> git clone/pull done, start configure, make, make install"
 
 LLVM_BUILD_DIR="llvm_build"
 mkdir -p $LLVM_BUILD_DIR && cd $LLVM_BUILD_DIR
