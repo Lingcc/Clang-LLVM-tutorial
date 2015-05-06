@@ -20,6 +20,7 @@ SOURCES = ClangSimple/ClangTutorial1.cpp \
     ClangCompilerInstance/ClangCIrewriter.cpp \
     ClangSimple/ClangToolingTutorial.cpp \
     ClangSimple/ClangCommentHandling.cpp \
+    ClangTypeSize/ClangTypeSize.cpp \
     LLVMJIT/LLVMJIT1.cpp \
     LLVMJIT/LLVMJIT2.cpp
 

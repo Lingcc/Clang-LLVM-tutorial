@@ -8,7 +8,7 @@ else
   echo ">>> git pull $LLVM_SRC_DIR"
   cd $LLVM_SRC_DIR && git pull &
 fi
-  
+
 CLANG_SRC_DIR="$LLVM_SRC_DIR/tools/clang"
 if [ ! -d "$CLANG_SRC_DIR" ]; then
     echo ">>> git clone $CLANG_SRC_DIR"
@@ -44,5 +44,5 @@ LLVM_BUILD_DIR="llvm_build"
 mkdir -p $LLVM_BUILD_DIR && cd $LLVM_BUILD_DIR
 bash -c "../$LLVM_SRC_DIR/configure --prefix=${HOME}/usr/" >& run_config.log
 bash -c "make -j5" >& run_make_all.log
-bash -c "make check-all" >& run_make_check_all.log 
+#bash -c "make check-all" >& run_make_check_all.log
 bash -c "make install" >& run_make_install.log
