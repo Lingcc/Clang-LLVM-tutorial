@@ -1,5 +1,10 @@
+# Kun Ling (kunling@lingcc.com) Lingcc.com
 # A LLVMIR Reader example for IR reading intermodulely by taking advantage
 # of Module's  getFunctionList() interface.
+# Get idea from http://stackoverflow.com/a/30215717/566459
+#
+
+
 all:
 	# Get the binary for IR reader
 	clang++ ReadBitCode.cpp -o reader `llvm-config --cxxflags --libs --ldflags --system-libs`
