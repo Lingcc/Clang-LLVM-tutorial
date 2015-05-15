@@ -16,11 +16,13 @@
  * =============================================================================
  */
 #include <iostream>
+#include <string>
 #include <llvm/Support/MemoryBuffer.h>
 #include <llvm/Support/ErrorOr.h>
 #include <llvm/IR/Module.h>
 #include <llvm/IR/LLVMContext.h>
 #include <llvm/Bitcode/ReaderWriter.h>
+#include <llvm/Support/raw_ostream.h>
 
 using namespace llvm;
 
@@ -59,8 +61,26 @@ int main(int argc, char *argv[]) {
       BasicBlock &bb = *iter2;
       std::cout << "  BasicBlock: " << bb.getName().str() << std::endl;
       for (auto iter3 = bb.begin(); iter3 != bb.end(); iter3++) {
-        Instruction &i = *iter3;
-        std::cout << "   Instruction: " << i.getOpcodeName() << std::endl;
+        Instruction &inst = *iter3;
+        std::cout << "   Instruction " << &inst << " : " << inst.getOpcodeName();
+        
+	unsigned int  i = 0;
+	unsigned int opnt_cnt = inst.getNumOperands();
+        for(; i < opnt_cnt; ++i)
+        {
+          Value *opnd = inst.getOperand(i);
+          std::string o;
+          //          raw_string_ostream os(o);
+          //         opnd->print(os);
+          //opnd->printAsOperand(os, true, m);
+          if (opnd->hasName()) {
+            o = opnd->getName();
+            std::cout << " " << o << "," ;
+          } else {
+            std::cout << " ptr" << opnd << ",";
+          }
+        }
+        std:: cout << std::endl;
       }
     }
   }
