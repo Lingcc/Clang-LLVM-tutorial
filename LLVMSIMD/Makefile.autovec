@@ -7,8 +7,11 @@ all:
 	clang -emit-llvm reduc.c -S  -o reduc.O0.ll
 	echo "Generating llvm IR by O3 from clang to reduc.O3.ll"
 	clang -emit-llvm -O3 -msse2 -S reduc.c -o reduc.O3.ll
+	echo "Generating llvm IR for code with SIMD intrisnic SSE4 to minmax_intrn.ll"
+	clang -emit-llvm -msse4 -S minmax_intrn.c -o minmax_intrn.ll
 clean:
 	-rm reduc.gcc.s
 	-rm reduc.clang.s
 	-rm a.out
 	-rm reduc.O0.ll reduc.O3.ll
+	-rm minmax_intrn.ll
