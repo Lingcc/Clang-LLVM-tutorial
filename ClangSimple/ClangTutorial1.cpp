@@ -28,7 +28,7 @@
  *   Clang make Preprocessor together with FE to improve performance.
  *   Here, the last line of the main function is to create a preprocessor object
  *   with the following parameters:
- *    1. IntrusiveRefCntPtr< PreprocessorOptions > 	PPOpts: Options for the preprocessor.
+*     1. IntrusiveRefCntPtr< PreprocessorOptions > 	PPOpts: Options for the preprocessor.
  *    2. DiagnosticsEngine & 	diags: Used by clang to report errors and warnings to user.
  *      2.1 DiagnosticsConsume: The object that is actually displaying the messages t the user.
  *    3. LangOptions & 	opts: What language to process, C/C++/Obj-C.
@@ -48,7 +48,6 @@ int main()
 				     &diagnosticOptions,
 				     true);
   llvm::IntrusiveRefCntPtr<clang::DiagnosticIDs> pDiagIDs;
-  //clang::DiagnosticIDs diagIDs;
     
   clang::DiagnosticsEngine *pDiagnosticsEngine =
     new clang::DiagnosticsEngine(pDiagIDs,
@@ -62,17 +61,18 @@ int main()
 				     *pDiagnosticsEngine,
 				     fileManager);
 
-  clang::TargetOptions targetOptions;
-  targetOptions.Triple = llvm::sys::getDefaultTargetTriple();
+  clang::TargetOptions* targetOptions = new clang::TargetOptions();
+  targetOptions->Triple = llvm::sys::getDefaultTargetTriple();
 
   clang::TargetInfo *pTargetInfo = 
     clang::TargetInfo::CreateTargetInfo(
 					*pDiagnosticsEngine,
-					&targetOptions);
+  					std::make_shared<clang::TargetOptions>(*targetOptions));
 
-  llvm::IntrusiveRefCntPtr<clang::HeaderSearchOptions> hso;
+  llvm::IntrusiveRefCntPtr<clang::HeaderSearchOptions> hso 
+        = new clang::HeaderSearchOptions();
 
-  clang::HeaderSearch headerSearch(hso,
+  clang::HeaderSearch headerSearch(*hso,
 				   fileManager, 
 				   *pDiagnosticsEngine,
 				   languageOptions,

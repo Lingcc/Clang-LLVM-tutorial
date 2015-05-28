@@ -1,0 +1,14 @@
+all:
+	echo "Generating gcc vectorized assembly to reduc.gcc.s"
+	gcc -O3 -msse2 reduc.c -S -o reduc.gcc.s
+	echo "Generating clang vectorized assembly to reduc.clang.s"
+	clang -O3 -msse2 reduc.c -s -o reduc.clang.s
+	echo "Generating llvm IR by O0 from clang to reduc.O0.ll"
+	clang -emit-llvm reduc.c -S  -o reduc.O0.ll
+	echo "Generating llvm IR by O3 from clang to reduc.O3.ll"
+	clang -emit-llvm -O3 -msse2 -S reduc.c -o reduc.O3.ll
+clean:
+	-rm reduc.gcc.s
+	-rm reduc.clang.s
+	-rm a.out
+	-rm reduc.O0.ll reduc.O3.ll
