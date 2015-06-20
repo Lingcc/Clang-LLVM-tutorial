@@ -72,8 +72,8 @@ int main()
   llvm::IntrusiveRefCntPtr<clang::HeaderSearchOptions> hso 
         = new clang::HeaderSearchOptions();
 
-  clang::HeaderSearch headerSearch(*hso,
-				   fileManager, 
+  clang::HeaderSearch headerSearch(hso,
+                                   sourceManager,
 				   *pDiagnosticsEngine,
 				   languageOptions,
 				   pTargetInfo);
@@ -85,7 +85,6 @@ int main()
 				   pOpts,
 				   *pDiagnosticsEngine,
 				   languageOptions,
-				   pTargetInfo,
 				   sourceManager,
 				   headerSearch,
 				   compInst);

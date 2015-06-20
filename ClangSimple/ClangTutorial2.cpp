@@ -58,17 +58,19 @@ int main()
 				     *pDiagnosticsEngine,
 				     fileManager);
 
-  clang::TargetOptions targetOptions;
-  targetOptions.Triple = llvm::sys::getDefaultTargetTriple();
+  clang::TargetOptions* targetOptions = new clang::TargetOptions();
+  targetOptions->Triple = llvm::sys::getDefaultTargetTriple();
 
   clang::TargetInfo *pTargetInfo = 
     clang::TargetInfo::CreateTargetInfo(
 					*pDiagnosticsEngine,
-					&targetOptions);
+					std::make_shared<clang::TargetOptions>(*targetOptions));
 
-  llvm::IntrusiveRefCntPtr<clang::HeaderSearchOptions> hso;
+  llvm::IntrusiveRefCntPtr<clang::HeaderSearchOptions> hso
+      = new clang::HeaderSearchOptions();
+
   clang::HeaderSearch headerSearch(hso,
-				   fileManager, 
+				   sourceManager, 
 				   *pDiagnosticsEngine,
 				   languageOptions,
 				   pTargetInfo);
@@ -80,14 +82,13 @@ int main()
 				   pOpts,
 				   *pDiagnosticsEngine,
 				   languageOptions,
-				   pTargetInfo,
 				   sourceManager,
 				   headerSearch,
 				   compInst);
 
 
   const clang::FileEntry *pFile = fileManager.getFile("../Resources/test.c");
-  sourceManager.createMainFileID(pFile);
+  sourceManager.setMainFileID(pFile);
   preprocessor.EnterMainSourceFile();
   pTextDiagnosticPrinter->BeginSourceFile(languageOptions, &preprocessor);
 
