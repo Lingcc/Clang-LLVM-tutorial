@@ -42,7 +42,7 @@ echo ">>> git clone/pull done, start configure, make, make install"
 
 LLVM_BUILD_DIR="llvm_build"
 mkdir -p $LLVM_BUILD_DIR && cd $LLVM_BUILD_DIR
-bash -c "cmake $LLVM_SRC_DIR -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=${HOME}/usr/ -DLLVM_TARGETS_TO_BUILD=all -DLLVM_BUILD_TESTS=ON -DLLVM_ENABLE_RTTI=ON " >& run_config.log
+bash -c "cmake ../$LLVM_SRC_DIR -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=${HOME}/usr/ -DLLVM_TARGETS_TO_BUILD=all -DLLVM_BUILD_TESTS=ON -DLLVM_ENABLE_RTTI=ON " >& run_config.log
 bash -c "cmake --build ." >& run_make_all.log
 #bash -c "cmake --build . --target check-all" >& run_make_all.log
 bash -c "cmake --build . --target install" >& run_make_all.log
