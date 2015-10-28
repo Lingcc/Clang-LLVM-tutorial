@@ -1,8 +1,9 @@
 #!/bin/sh
 
 echo ">>>Diretly Compile HelloWorld into binary using LLVM"
-echo ">>>> $ clang helloworld.c"
-clang helloworld.c
+CMD=clang ../Resources/helloworld.c -o
+echo "$CMD"
+bash -c "$CMD"
 
 
 echo ">>>Emit LLVM IR file Helloworld.bc based on the source code"

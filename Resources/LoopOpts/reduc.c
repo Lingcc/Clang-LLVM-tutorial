@@ -20,21 +20,48 @@
 
 #define ARRAY_SIZE 100
 
-int foo(int* a , int n) {
+
+int a[ARRAY_SIZE];
+int b[ARRAY_SIZE];
+
+int foo_a() {
   int i;
   int sum = 0;
-  for (; i < n; i++) {
+  for (i=0; i < ARRAY_SIZE; i++) {
     sum += a[i];
   }
   return sum;
 }
 
 
+int foo_b() {
+  int i;
+  int sum = 0;
+  for (i=0; i < ARRAY_SIZE; i++) {
+    sum += b[i];
+  }
+  return sum;
+}
+void init_arr() {
+  int i;
+  for(i=0; i < ARRAY_SIZE; i++) {
+    a[i] = 1;
+  }
+}
+
+void copy_arr() {
+  int i;
+  for (i=0; i < ARRAY_SIZE; i++) {
+    b[i] = a[i];
+  }
+  return;
+}
+
 int main() {
-  int a[ARRAY_SIZE] = {1};
-
-  int sum = foo(a, ARRAY_SIZE);
-
-  printf("sum:0x%x\n", sum);
+  init_arr();
+  copy_arr();
+  int res_a = foo_a();
+  int res_b = foo_b();
+  printf("result a:%d, result b:%d\n", res_a, res_b);
   return 0;
 }
