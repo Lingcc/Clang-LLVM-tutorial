@@ -1,3 +1,6 @@
 Many thanks to:
 
-Nico Weber and Justin LaPre for initial versions of the tutorial 
+## Initial versions of the tutorial 
+ - Nico Weber 
+ - Justin LaPre
+ - Larry Olson
