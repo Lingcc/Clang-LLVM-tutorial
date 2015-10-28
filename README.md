@@ -1,5 +1,5 @@
 # About #
-This is a collection of tutorials showing off how to use core Clang and LLVM types. It is based directly on two older tutorials which no longer built due to code rot. It will try to make anyone who is interested in LLVM and Clang could dig into them as soon as possible.
+This is a collection of examples showing off how to use core Clang and LLVM. It is based directly on two older tutorials which no longer built due to code rot. It will try to make anyone who is interested in LLVM and Clang could dig into them as soon as possible.
 
 This project forked from [loarabia / Clang-tutorial](https://github.com/loarabia/Clang-tutorial), and extend it for not only more Clang tutorial cases, but also plenty of LLVM tutorials cases, and we have also adjust the source code layout.
 
@@ -44,19 +44,18 @@ This particular set of tutorials tracks the llvm / clang mainline and is updated
 # Other Options #
 The Clang team has been hard at work making it easier to write tools using Clang. There are [4 options](http://clang.llvm.org/docs/Tooling.html) for developing tools using clang and llvm infrastructure.
 
-# Latest Stable LLVM / Clang (v3.2) #
-The master branch tracks recent commits to the clang and llvm svn. The tutorial assumes you have grabbed a copy of both llvm and clang by following [these instructions](http://clang.llvm.org/get_started.html) and that have installed the the resulting binaries by running `make install`. If you want the latest public release, then checkout the *3.2* branch.
+# Latest Stable LLVM / Clang (v3.7) #
+The master branch tracks recent commits to the clang and llvm svn. The tutorial assumes you have grabbed a copy of both llvm and clang by following [these instructions](http://clang.llvm.org/get_started.html) and that have installed the the resulting binaries by running `make install`. If you want the latest public release, then checkout the *3.7* branch.
 
-    git clone git@github.com:loarabia/Clang-tutorial.git
-    git checkout 3.2
-
-
-These code can also work on the latest LLVM SVN trunck: SVN r179830
+    git clone git@github.com:Lingcc/Clang-LLVM-tutorial.git
+    git checkout 3.7
 
 # CI tutorials #
 The tutorials prefixed with CI are the same as the original tutorials but use the [CompilerInstance](http://clang.llvm.org/doxygen/classclang_1_1CompilerInstance.html) object and its helper methods to perform the same tasks as the original tutorials. For the most part, this makes the code much more compact.
 
 
 # Contact Me #
-For any questions, please ping me via my github account. Changes and additions are always welcome.
+For any questions, you can:
+- ping me on github
+- email me kunling@lingcc.com
 
