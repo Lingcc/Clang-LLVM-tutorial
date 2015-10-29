@@ -22,7 +22,9 @@ branches:
     - master
 
 script:
-    - cmake
+    - cmake --version
+    - mkdir build && cd build
+    - cmake ../
     - make clean
     - make all
     - make test
