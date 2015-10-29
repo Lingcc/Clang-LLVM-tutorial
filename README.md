@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/Lingcc/Clang-LLVM-tutorial.svg?branch=master)](https://travis-ci.org/Lingcc/Clang-LLVM-tutorial)
+[![Build Status](https://travis-ci.org/Lingcc/Clang-LLVM-tutorial.svg?branch=master)](https://travis-ci.org/Lingcc/Clang-LLVM-tutorial) [![Coverage Status](https://coveralls.io/repos/Lingcc/Clang-LLVM-tutorial/badge.svg?branch=master&service=github)](https://coveralls.io/github/Lingcc/Clang-LLVM-tutorial?branch=master)
 # About #
 This is a collection of examples showing off how to use core Clang and LLVM. It is based directly on two older tutorials which no longer built due to code rot. It will try to make anyone who is interested in LLVM and Clang could dig into them as soon as possible.
 
@@ -59,4 +59,3 @@ The tutorials prefixed with CI are the same as the original tutorials but use th
 For any questions, you can:
 - ping me on github
 - email me kunling@lingcc.com
-
