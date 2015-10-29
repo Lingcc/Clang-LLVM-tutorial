@@ -1,0 +1,14 @@
+
+language: cpp
+compiler:
+  - clang
+  - gcc
+
+os:
+  - linux
+
+branches:
+  only:
+    - master
+
+script: cmake && make clean all test
