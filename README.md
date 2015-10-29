@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/Lingcc/Clang-LLVM-tutorial.svg?branch=master)](https://travis-ci.org/Lingcc/Clang-LLVM-tutorial)
 # About #
 This is a collection of examples showing off how to use core Clang and LLVM. It is based directly on two older tutorials which no longer built due to code rot. It will try to make anyone who is interested in LLVM and Clang could dig into them as soon as possible.
 
